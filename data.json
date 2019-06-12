@@ -1,0 +1,175 @@
+{
+	"DAG_info": {
+		"name": "DAG_201903291101",
+		"create_time": "2019/03/29 11:00",
+		"update_time": "2019/03/29 11:00",
+		"creator": "admin"
+	},
+	"node_list": [
+		"dataset1_1",
+		"replace_2",
+		"split_data_3",
+		"feature_normalization_4",
+		"apply_transformer_5",
+		"logistic_regression_6",
+		"model_evaluaton_7",
+		"model_evaluaton_8"
+	],
+	"node_relations": {
+		"dataset1_1": [],
+		"replace_2": [
+			{
+				"source": "dataset1_1",
+				"source_index": 0,
+				"target_index": 0
+			}
+		],
+		"split_data_3": [
+			{
+				"source": "replace_2",
+				"source_index": 0,
+				"target_index": 0
+			}
+		],
+		"feature_normalization_4": [
+			{
+				"source": "split_data_3",
+				"source_index": 0,
+				"target_index": 0
+			}
+		],
+		"apply_transformer_5": [
+			{
+				"source": "feature_normalization_4",
+				"source_index": 1,
+				"target_index": 0
+			},
+			{
+				"source": "split_data_3",
+				"source_index": 1,
+				"target_index": 1
+			}
+		],
+		"logistic_regression_6": [
+			{
+				"source": "feature_normalization_4",
+				"source_index": 0,
+				"target_index": 0
+			}
+		],
+		"model_evaluaton_7": [
+			{
+				"source": "logistic_regression_6",
+				"source_index": 0,
+				"target_index": 0
+			},
+			{
+				"source": "apply_transformer_5",
+				"source_index": 0,
+				"target_index": 1
+			}
+		],
+		"model_evaluaton_8": [
+			{
+				"source": "logistic_regression_6",
+				"source_index": 0,
+				"target_index": 0
+			},
+			{
+				"source": "feature_normalization_4",
+				"source_index": 0,
+				"target_index": 1
+			}
+		]
+	},
+	"node_details": {
+		"dataset1_1": {
+			"display_name": "Dataset1",
+			"name": "dataset1_1",
+			"coordinate": {
+				"x": 200,
+				"y": 10
+			},
+			"params": {
+				"dataset_id": 40
+			}
+		},
+		"replace_2": {
+			"display_name": "Replace",
+			"name": "replace_2",
+			"coordinate": {
+				"x": 200,
+				"y": 50
+			},
+			"params": {
+				"algo_name": "CustomImputer",
+				"algo_params": {
+					"selected_cols": [
+						"sex",
+						"age",
+						"chol"
+					]
+				}
+			}
+		},
+		"split_data_3": {
+			"displace_name": "Split Data",
+			"name": "split_data_3",
+			"coordinate": {
+				"x": 200,
+				"y": 100
+			},
+			"params": {}
+		},
+		"feature_normalization_4": {
+			"display_name": "Feature Normalization",
+			"name": "feature_normalization_4",
+			"coordinate": {
+				"x": 150,
+				"y": 150
+			},
+			"params": {
+				"algo_name": "CustomStandardScaler"
+			}
+		},
+		"apply_transformer_5": {
+			"display_name": "Apply Transformer",
+			"name": "apply_transformer_5",
+			"coordinate": {
+				"x": 300,
+				"y": 180
+			},
+			"params": {}
+		},
+		"logistic_regression_6": {
+			"display_name": "Logistic Regression",
+			"name": "logistic_regression_6",
+			"coordinate": {
+				"x": 150,
+				"y": 200
+			},
+			"params": {
+				"max_iter": 4,
+				"learning_rate": 0.5
+			}
+		},
+		"model_evaluaton_7": {
+			"display_name": "Model Evaluation",
+			"name": "model_evaluation_7",
+			"coordinate": {
+				"x": 300,
+				"y": 230
+			},
+			"params": {}
+		},
+		"model_evaluaton_8": {
+			"display_name": "Model Evaluation",
+			"name": "model_evaluation_8",
+			"coordinate": {
+				"x": 150,
+				"y": 250
+			},
+			"params": {}
+		}
+	}
+}
